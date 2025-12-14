@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Message } from '../types';
 import { generateSpeechFromText, decodePCM } from '../services/geminiService';
+import Markdown from 'react-markdown';
 
 interface MessageBubbleProps {
   message: Message;
@@ -83,7 +84,7 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
   return (
     <div className={`flex w-full ${isUser ? 'justify-end' : 'justify-start'} mb-6 animate-pop-in`}>
-      <div className={`max-w-[85%] md:max-w-[75%] flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
+      <div className={`max-w-[90%] md:max-w-[75%] flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
         
         {/* Role Label */}
         <span className={`text-xs mb-1 font-semibold ${isUser ? 'text-indigo-600 mr-1' : 'text-emerald-600 ml-1'}`}>
@@ -92,15 +93,30 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
         {/* Bubble */}
         <div
-          className={`px-5 py-4 rounded-2xl shadow-sm text-sm md:text-base leading-relaxed whitespace-pre-wrap transition-shadow hover:shadow-md
+          className={`px-5 py-4 rounded-2xl shadow-sm text-sm md:text-base leading-relaxed transition-shadow hover:shadow-md
             ${isUser 
-              ? 'bg-indigo-600 text-white rounded-tr-none' 
+              ? 'bg-indigo-600 text-white rounded-tr-none whitespace-pre-wrap' 
               : 'bg-white border border-slate-200 text-slate-800 rounded-tl-none'
             }
             ${message.isError ? 'bg-red-50 border-red-200 text-red-600' : ''}
           `}
         >
-          {message.text}
+          {isUser ? (
+            message.text
+          ) : (
+            <Markdown 
+              className="prose prose-sm max-w-none prose-slate
+                prose-p:my-2 prose-p:leading-relaxed
+                prose-headings:my-2 prose-headings:font-bold prose-headings:text-indigo-900
+                prose-ul:my-2 prose-li:my-0.5
+                prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
+                prose-strong:text-slate-900 prose-strong:font-bold
+                prose-code:bg-slate-100 prose-code:text-pink-600 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-[0.9em] prose-code:before:content-none prose-code:after:content-none
+              "
+            >
+              {message.text}
+            </Markdown>
+          )}
         </div>
 
         {/* Action Buttons (Only for Model) */}
