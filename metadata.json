@@ -1,0 +1,7 @@
+{
+  "name": "Ustaad AI - Student Study Companion",
+  "description": "An intelligent tutor for students covering English, Urdu, Maths, Physics, Chemistry, Biology, and Computer Science. Provides simple explanations and internet references.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
