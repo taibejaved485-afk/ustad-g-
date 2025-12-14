@@ -6,6 +6,7 @@ export enum Subject {
   CHEMISTRY = 'Chemistry',
   BIOLOGY = 'Biology',
   COMPUTER = 'Computer Science',
+  PAK_STUDIES = 'Pak Studies',
   GENERAL = 'General Help'
 }
 

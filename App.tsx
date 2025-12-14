@@ -13,6 +13,7 @@ const SUBJECTS_CONFIG = [
   { id: Subject.CHEMISTRY, icon: 'fas fa-flask', color: 'bg-amber-500' },
   { id: Subject.BIOLOGY, icon: 'fas fa-dna', color: 'bg-teal-500' },
   { id: Subject.COMPUTER, icon: 'fas fa-laptop-code', color: 'bg-blue-500' },
+  { id: Subject.PAK_STUDIES, icon: 'fas fa-landmark', color: 'bg-green-600' },
 ];
 
 // Extend Window interface for Web Speech API
